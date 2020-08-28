@@ -1,11 +1,36 @@
-import { replaceUnwantedKeyString } from "./summaryIndexing";
+import { replaceUnwantedKeyString, summaryIndexing } from "./summaryIndexing";
+
+// import { summariesIndexing } from "./data";
+let summaryTestingObj = {
+  summaries: [
+    {
+      id: 0,
+      summary: "Hello!! World Hello *",
+    },
+    {
+      id: 1,
+      summary: "Beaituful 10X 1) beaituful Hello",
+    },
+  ],
+};
+let result = {
+  Hello: { id: [0, 1] },
+  World: { id: [0] },
+  "": { id: [0] },
+  Beaituful: { id: [1] },
+  "10X": { id: [1] },
+  beaituful: { id: [1] },
+};
 
 test("Remove the unwanted character from the summary to be key in hash maps", () => {
   expect(
     replaceUnwantedKeyString({
       id: 1,
-      summary:
-        "The Book in Three Sentences: The 10X Rule says that 1) you should set targets for yourself that are 10X greater than what you believe you can achieve and 2) you should take actions that are 10X greater than what you believe are necessary to achieve your goals. The biggest mistake most people make in life is not setting goals high enough. Taking massive action is the only way to fulfill your true potential.",
+      summary: "Hello World of search query",
     })
-  ).toBe("");
+  ).toStrictEqual(["Hello", "World", "of", "search", "query"]);
+});
+
+test("Build Index", () => {
+  expect(summaryIndexing(summaryTestingObj)).toStrictEqual(result);
 });
