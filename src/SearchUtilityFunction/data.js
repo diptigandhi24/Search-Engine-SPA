@@ -613,24 +613,6 @@ let data = {
     },
   ],
 };
-export let summariesIndexing = new Map();
+export let summariesList = data.summaries;
 export let bookTitlesList = data.titles;
 export let bookAuthorsList = data.authors;
-
-function createNewkey(strKey, summaryId) {
-  summariesIndexing.set(strKey, { id: [summaryId] });
-}
-
-function upgradeExistingKey(strKey, summaryId) {
-  summariesIndexing.get(strKey)["id"].push(summaryId);
-}
-//every word will be a key
-//Each key will have array summary ids that words belong to
-data.summaries.forEach((element) => {
-  let summaryArr = element.summary.split(" ");
-  summaryArr.forEach((word) => {
-    summariesIndexing.has(word)
-      ? upgradeExistingKey(word, element.id)
-      : createNewkey(word, element.id);
-  });
-});
