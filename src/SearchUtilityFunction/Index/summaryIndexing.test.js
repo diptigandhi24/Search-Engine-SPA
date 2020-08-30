@@ -1,4 +1,4 @@
-import { replaceUnwantedKeyString, summaryIndexing } from "./summaryIndexing";
+import { createSummariesIndex } from "./createSummariesIndexIndex";
 
 // import { summariesIndexing } from "./data";
 let summaryTestingObj = {
@@ -22,15 +22,15 @@ let result = {
   beaituful: { id: [1] },
 };
 
-test("Remove the unwanted character from the summary to be key in hash maps", () => {
-  expect(
-    replaceUnwantedKeyString({
-      id: 1,
-      summary: "Hello World of search query",
-    })
-  ).toStrictEqual(["Hello", "World", "of", "search", "query"]);
-});
+// test("Remove the unwanted character from the summary to be key in hash maps", () => {
+//   expect(
+//     replaceUnwantedKeyString({
+//       id: 1,
+//       summary: "Hello World of search query",
+//     })
+//   ).toStrictEqual(["Hello", "World", "of", "search", "query"]);
+// });
 
 test("Build Index", () => {
-  expect(summaryIndexing(summaryTestingObj)).toStrictEqual(result);
+  expect(createSummariesIndex(summaryTestingObj)).toStrictEqual(result);
 });
