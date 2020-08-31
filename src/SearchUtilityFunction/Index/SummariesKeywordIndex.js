@@ -1,3 +1,4 @@
+import { summariesList } from "./data";
 import createIndexContent from "./createSummariesIndex";
 function replaceUnwantedKeywords(summary) {
   const regex = /[!“”#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
@@ -6,7 +7,7 @@ function replaceUnwantedKeywords(summary) {
   summary = summary.replace(/\d\s/g, "");
   return summary;
 }
-export default function summariesKeywordsIndex(collectionOfSummaries) {
+function summariesKeywordsIndex(collectionOfSummaries) {
   let listofSummaries = collectionOfSummaries;
   let index = new Map();
 
@@ -20,3 +21,6 @@ export default function summariesKeywordsIndex(collectionOfSummaries) {
   });
   return index;
 }
+
+let indexHashMap = summariesKeywordsIndex(summariesList);
+export default indexHashMap;
