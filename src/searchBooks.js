@@ -10,6 +10,9 @@ export default function SearchForm() {
   let [displaySearchResult, updateDisplaySearchResults] = useState([]);
   let [disabledButton, isDisabled] = useState(true);
   let [selectedBooksdetails, updateSelectedBook] = useState([]);
+  function displayList(inputQuery) {
+    let result = searchForBooks(inputQuery, numberOfBook);
+    return result.map((bookinfo, index) => {
         return (
           <li
             key={index}
@@ -24,11 +27,15 @@ export default function SearchForm() {
               isDisabled((prev) => !prev);
             }}
           >
-            {bookname}
+          {bookinfo.bookTitle}
           </li>
         );
       });
-    });
+  let handleChange = (e) => {
+    let inputQuery = e.target.value;
+    console.log("onchnage value", inputQuery);
+    updateQuery({ ...query, bookTitle: inputQuery });
+    updateDisplaySearchResults(() => displayList(inputQuery));
   };
 
   return (
