@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import searchForBooks from "./SearchUtilityFunction/searchFunction";
 import "./searchBooks.css";
 export default function SearchForm() {
-  let [query, updateQuery] = useState("");
+  let [query, updateQuery] = useState({ bookTitle: "", bookId: "" });
   let [numberOfBook, updateNoOfBooks] = useState(3);
   let [displaySearchResult, updateDisplaySearchResults] = useState([]);
   let [disabledButton, isDisabled] = useState(true);
