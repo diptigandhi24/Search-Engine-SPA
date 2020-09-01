@@ -9,12 +9,7 @@ export default function SearchForm() {
   let [numberOfBook, updateNoOfBooks] = useState(3);
   let [displaySearchResult, updateDisplaySearchResults] = useState([]);
   let [disabledButton, isDisabled] = useState(true);
-  let result = [];
-  let handleChange = (change, updateState) => {
-    updateState(change);
-    updateDisplaySearchResults(() => {
-      result = searchForBooks(change, numberOfBook);
-      return result.map((bookname, index) => {
+  let [selectedBooksdetails, updateSelectedBook] = useState([]);
         return (
           <li
             key={index}
