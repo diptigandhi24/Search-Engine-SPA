@@ -10,27 +10,30 @@ export default function SearchForm() {
   let [displaySearchResult, updateDisplaySearchResults] = useState([]);
   let [disabledButton, isDisabled] = useState(true);
   let [selectedBooksdetails, updateSelectedBook] = useState([]);
+
   function displayList(inputQuery) {
     let result = searchForBooks(inputQuery, numberOfBook);
     return result.map((bookinfo, index) => {
-        return (
-          <li
-            key={index}
-            id={index}
-            onClick={(e) => {
+      return (
+        <li
+          key={index}
+          id={index}
+          onClick={(e) => {
             updateQuery({
               ...query,
               bookTitle: result[e.currentTarget.id].bookTitle,
               bookId: e.currentTarget.id,
             });
-              updateDisplaySearchResults([]);
-              isDisabled((prev) => !prev);
-            }}
-          >
+            updateDisplaySearchResults([]);
+            isDisabled((prev) => !prev);
+          }}
+        >
           {bookinfo.bookTitle}
-          </li>
-        );
-      });
+        </li>
+      );
+    });
+  }
+
   let handleChange = (e) => {
     let inputQuery = e.target.value;
     console.log("onchnage value", inputQuery);
@@ -39,31 +42,46 @@ export default function SearchForm() {
   };
 
   return (
-    <div className="form-wrapper">
-      <form>
-        <div className="form-content">
-          <label className="form-input">Number of books :</label>
-          <input
-            className="input-number"
-            type="number"
-            placeholder="3"
-            onChange={(e) => updateNoOfBooks(e.target.value)}
-            value={numberOfBook}
-          />
-        </div>
-        <div className="form-content">
-          <label>Enter search word :</label>
-          <div className="list-wrapper">
+    <React.Fragment>
+      <div className="form-wrapper">
+        <form>
+          <div className="form-content">
+            <label
+              className="form-input"
+              for="Number of search results, default is 3"
+            >
+              Number of books :
+            </label>
             <input
-              type="text"
-              placeholder="Enter Book name"
-              onChange={(e) => handleChange(e.target.value, updateQuery)}
-              value={query}
+              className="input-number"
+              type="number"
+              placeholder="3"
+              onChange={(e) => {
+                updateNoOfBooks(e.target.value);
+              }}
+              value={numberOfBook}
             />
-            <ul className="form-option">{displaySearchResult}</ul>
           </div>
-        </div>
-        <div className="form-content">
+          <div className="form-content">
+            <label for="Enter the keywords to search books">
+              Enter search word :
+            </label>
+            <div className="list-wrapper">
+              <input
+                type="text"
+                placeholder="Enter Book name"
+                onChange={handleChange}
+                value={query.bookTitle}
+                accesskey="f"
+                tabindex="1"
+              />
+              <ul className="form-option">{displaySearchResult}</ul>
+            </div>
+          </div>
+          <div className="form-content">
+            <button
+              type="button"
+              disabled={disabledButton}
               onClick={() => {
                 let details = getBookDetails(query.bookId);
                 updateSelectedBook((prevState) => {
@@ -76,9 +94,13 @@ export default function SearchForm() {
                 });
                 isDisabled((prev) => !prev);
               }}
-        </div>
-      </form>
-    </div>
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
       <DisplaySearchBook selectedBooks={selectedBooksdetails} />
+    </React.Fragment>
   );
 }
