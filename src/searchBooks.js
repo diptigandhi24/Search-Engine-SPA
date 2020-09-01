@@ -64,7 +64,18 @@ export default function SearchForm() {
           </div>
         </div>
         <div className="form-content">
-          <button disabled={disabledButton}>Submit</button>
+              onClick={() => {
+                let details = getBookDetails(query.bookId);
+                updateSelectedBook((prevState) => {
+                  return prevState.concat([{ ...query, ...details }]);
+                });
+                updateQuery({
+                  ...query,
+                  bookTitle: "",
+                  bookId: "",
+                });
+                isDisabled((prev) => !prev);
+              }}
         </div>
       </form>
     </div>
