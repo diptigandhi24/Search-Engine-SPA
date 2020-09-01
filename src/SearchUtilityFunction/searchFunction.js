@@ -1,4 +1,4 @@
-import { bookTitlesList } from "./Index/data";
+import { bookTitlesList, summariesList, bookAuthorsList } from "./Index/data";
 import indexHashMap from "./Index/SummariesKeywordIndex.js";
 import stopWordsList from "./Index/stopWordsList.js";
 import accumulateCommonBooks from "./accumulateCommonBooks";
@@ -57,15 +57,21 @@ export default function searchForBooks(userQuery, noOfBooks) {
   );
 
   let bookList = sortHighPriorityBook(commonBooksCounter);
-  let noOfBooksQuery = bookList.splice(0, noOfBooks);
+  let searchResults = bookList.splice(0, noOfBooks);
   let displayBooksTitle = [];
-  noOfBooksQuery.forEach((id) => {
-    displayBooksTitle.push(bookTitlesList[id.bookId]);
+  searchResults.forEach((id) => {
+    displayBooksTitle.push({
+      bookTitle: bookTitlesList[id.bookId],
+      bookId: id.bookId,
+    });
   });
-  console.log(
-    "Length of the queryWord",
-    displayBooksTitle.length,
-    displayBooksTitle
-  );
+
   return displayBooksTitle.length === 0 ? [] : displayBooksTitle;
+}
+
+export function getBookDetails(id) {
+  return {
+    bookAuthor: bookAuthorsList[id].author,
+    bookSummary: summariesList[id].summary,
+  };
 }

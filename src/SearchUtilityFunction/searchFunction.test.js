@@ -1,4 +1,4 @@
-import { searchForBooks } from "./searchFunction";
+import searchForBooks from "./searchFunction";
 // import { summariesList, bookTitlesList, bookAuthorsList } from "./data";
 
 let queryList = "hello! world life fuck";
