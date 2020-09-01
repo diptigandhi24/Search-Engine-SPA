@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import searchForBooks from "./SearchUtilityFunction/searchFunction";
+import DisplaySearchBook from "./displaySearchBook";
 import "./searchBooks.css";
 export default function SearchForm() {
   let [query, updateQuery] = useState({ bookTitle: "", bookId: "" });
@@ -63,5 +63,6 @@ export default function SearchForm() {
         </div>
       </form>
     </div>
+      <DisplaySearchBook selectedBooks={selectedBooksdetails} />
   );
 }
