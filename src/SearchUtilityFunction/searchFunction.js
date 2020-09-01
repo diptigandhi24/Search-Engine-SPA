@@ -42,7 +42,7 @@ function sortHighPriorityBook(map) {
   return bookList;
 }
 
-export function searchForBooks(userQuery, noOfBooks) {
+export default function searchForBooks(userQuery, noOfBooks) {
   let queryList = filterStopWords(userQuery);
   let allsearchedresults = new Map();
   let commonBooksCounter = new Map();
@@ -62,6 +62,10 @@ export function searchForBooks(userQuery, noOfBooks) {
   noOfBooksQuery.forEach((id) => {
     displayBooksTitle.push(bookTitlesList[id.bookId]);
   });
-
-  return displayBooksTitle;
+  console.log(
+    "Length of the queryWord",
+    displayBooksTitle.length,
+    displayBooksTitle
+  );
+  return displayBooksTitle.length === 0 ? [] : displayBooksTitle;
 }
