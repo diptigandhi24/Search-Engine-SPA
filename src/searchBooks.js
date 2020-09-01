@@ -17,7 +17,11 @@ export default function SearchForm() {
             key={index}
             id={index}
             onClick={(e) => {
-              updateQuery(result[e.currentTarget.id]);
+            updateQuery({
+              ...query,
+              bookTitle: result[e.currentTarget.id].bookTitle,
+              bookId: e.currentTarget.id,
+            });
               updateDisplaySearchResults([]);
               isDisabled((prev) => !prev);
             }}
