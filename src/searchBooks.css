@@ -1,0 +1,77 @@
+.form-wrapper {
+  display: block;
+  width: 70%;
+  text-align: left;
+  margin: 20px 15% 20px 15%;
+}
+
+.form-content {
+  width: 50%;
+  margin: 0px 25%;
+  padding: 5px;
+}
+.form-content label {
+  padding: 10px;
+}
+
+.form-content input[type="number"] {
+  width: 50px;
+}
+
+.form-content input {
+  /* width: 50px; */
+  /* margin-bottom: 20px; */
+  margin-left: 20px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.form-content button {
+  margin-left: 10px;
+  padding: 5px;
+  width: 50%;
+}
+.list-wrapper {
+  display: inline-block;
+  width: 50%;
+  position: relative;
+}
+.list-wrapper input[type="text"] {
+  width: 100%;
+}
+ul {
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  transition-property: heigth;
+  transition: all 2s;
+  background-color: rgba(255, 255, 255, 1);
+  position: absolute;
+  margin-left: 20px;
+  padding: 0px 5px;
+  width: 100%;
+}
+ul > li {
+  padding: 10px 0px 10px 0px;
+  border-bottom: 0.1px solid rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+@media screen and (max-width: 600px) {
+  .form-content {
+    width: 100%;
+    margin: 0px 5%;
+    padding: 5px;
+  }
+  .form-content label {
+    display: block;
+  }
+  .form-content input {
+    margin-bottom: 20px;
+
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+}
