@@ -4,8 +4,8 @@ export default function DisplaySearchBook({ selectedBooks }) {
   return (
     <div className="card-container">
       {selectedBooks.length !== 0 ? (
-        selectedBooks.map((book) => (
-          <div className="bookInfo-card">
+        selectedBooks.map((book, index) => (
+          <div className="bookInfo-card" key={index}>
             <h1>{book.bookTitle}</h1>
             <p>{book.bookSummary}</p>
             <hr />
