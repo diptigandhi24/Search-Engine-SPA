@@ -4,7 +4,7 @@ import searchForBooks, {
 } from "../../SearchUtilityFunction/searchFunction";
 import DisplaySearchBook from "../DisplaySelectedBookCard/displaySearchBook";
 import "./searchBooks.css";
-import AutoCompleteOptions from "./autoComplete";
+import OptionsList from "./autoComplete";
 import {
   FormInput,
   FormAutocompleteInput,
@@ -55,19 +55,18 @@ export default function SearchForm() {
     let result = searchForBooks(inputQuery, numberOfBook);
     return result.map((bookinfo, index) => {
       return (
-        <AutoCompleteOptions
+        <OptionsList
           id={index}
           key={index}
           onClick={(e) => onSubmitQuery(e, result)}
           children={bookinfo.bookTitle}
-        ></AutoCompleteOptions>
+        ></OptionsList>
       );
     });
   }
 
   let handleChange = (e) => {
     let inputQuery = e.target.value;
-    console.log("onchnage value", inputQuery);
     updateQuery({ ...query, bookTitle: inputQuery });
     updateDisplaySearchResults(() => displayAutocompleteList(inputQuery));
   };
