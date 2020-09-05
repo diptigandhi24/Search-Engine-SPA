@@ -1,5 +1,15 @@
 import React from "react";
 import "./searchFormUI.css";
+import PropTypes from "prop-types";
+
+let InputProps = {
+  type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  accessFor: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  labelValue: PropTypes.string.isRequired,
+};
 export function FormInput({
   type,
   placeholder,
@@ -10,7 +20,7 @@ export function FormInput({
 }) {
   return (
     <div className="form-content">
-      <label for={accessFor}>{labelValue}</label>
+      <label htmlFor={accessFor}>{labelValue}</label>
       <input
         type={type}
         placeholder={placeholder}
@@ -20,6 +30,7 @@ export function FormInput({
     </div>
   );
 }
+FormInput.protoTypes = InputProps;
 
 export function FormAutocompleteInput({
   type,
@@ -32,7 +43,7 @@ export function FormAutocompleteInput({
 }) {
   return (
     <div className="form-content">
-      <label for={accessFor}>{labelValue}</label>
+      <label htmlFor={accessFor}>{labelValue}</label>
       <div className="list-wrapper">
         <input
           type={type}
@@ -46,6 +57,8 @@ export function FormAutocompleteInput({
   );
 }
 
+FormAutocompleteInput.protoTypes = InputProps;
+
 export function SubmitFormQuery({ disabled, onClick, buttonName }) {
   return (
     <div className="form-content">
@@ -55,3 +68,9 @@ export function SubmitFormQuery({ disabled, onClick, buttonName }) {
     </div>
   );
 }
+
+SubmitFormQuery.protoTypes = {
+  disabled: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+  buttonName: PropTypes.string.isRequired,
+};
