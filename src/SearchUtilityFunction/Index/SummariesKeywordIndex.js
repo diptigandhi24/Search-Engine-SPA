@@ -7,7 +7,7 @@ function replaceUnwantedKeywords(summary) {
   summary = summary.replace(/\d\s/g, "");
   return summary;
 }
-function summariesKeywordsIndex(collectionOfSummaries) {
+export function summariesKeywordsIndex(collectionOfSummaries) {
   let listofSummaries = collectionOfSummaries;
   let index = new Map();
 

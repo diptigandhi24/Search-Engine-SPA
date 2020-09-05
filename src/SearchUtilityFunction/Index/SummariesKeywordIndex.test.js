@@ -1,4 +1,4 @@
-import summariesKeywordsIndex from "./SummariesKeywordIndex";
+import { summariesKeywordsIndex } from "./SummariesKeywordIndex";
 
 let summariesCollection = [
   {

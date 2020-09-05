@@ -1,15 +1,29 @@
 import searchForBooks from "./searchFunction";
-// import { summariesList, bookTitlesList, bookAuthorsList } from "./data";
 
-let queryList = "hello! world life fuck";
+let queryList = "hello! world life meditate";
+let result = [
+  {
+    bookId: 0,
+    bookTitle: "Anything You Want",
+  },
+  {
+    bookId: 3,
+    bookTitle: "The Nurture Assumption",
+  },
+  {
+    bookId: 19,
+    bookTitle: "10 Happier",
+  },
+  {
+    bookId: 34,
+    bookTitle: "Rules for a Knight",
+  },
+  {
+    bookId: 40,
+    bookTitle: "Manual for Living",
+  },
+];
+
 test("get the books with respect to users input", () => {
-  //   expect(searchBookList("patriachy")).toBe(undefined);
-  // expect(searchForBooks("the world Horror life")).toBe(true);
-  expect(searchForBooks(queryList, 5)).toStrictEqual(["word"]);
+  expect(searchForBooks(queryList, 5)).toEqual(expect.arrayContaining(result));
 });
-
-// test("Filter the stop words", () => {
-//   expect(filterStopWords("world is beautiful has been in the school")).toBe(
-//     "world beautiful school"
-//   );
-// });
