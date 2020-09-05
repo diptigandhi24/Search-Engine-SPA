@@ -18,6 +18,5 @@ describe("FormInputs UI along with common propTypes", () => {
       />
     );
     render(<FormAutocompleteInput />);
-    screen.debug();
   });
 });
