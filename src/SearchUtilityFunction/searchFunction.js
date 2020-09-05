@@ -1,4 +1,4 @@
-import { bookTitlesList, summariesList, bookAuthorsList } from "./Index/data";
+import { bookTitlesList } from "./Index/data";
 import indexHashMap from "./Index/SummariesKeywordIndex.js";
 import stopWordsList from "./Index/stopWordsList.js";
 import accumulateCommonBooks from "./accumulateCommonBooks";
@@ -37,13 +37,6 @@ function filterStopWords(userQuery) {
     (word) => !stopWordsList.has(word) && indexHashMap.has(word)
   );
   return filterQueryList;
-}
-
-export function getBookDetails(id) {
-  return {
-    bookAuthor: bookAuthorsList[id].author,
-    bookSummary: summariesList[id].summary,
-  };
 }
 
 function getTheBooksBasedOnEachQueryWord(allsearchresults, queryWord) {

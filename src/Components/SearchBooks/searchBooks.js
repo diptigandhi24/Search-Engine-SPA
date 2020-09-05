@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import searchForBooks, {
-  getBookDetails,
-} from "../../SearchUtilityFunction/searchFunction";
+import searchForBooks from "../../SearchUtilityFunction/searchFunction";
 import DisplaySearchBook from "../DisplaySelectedBookCard/displaySearchBook";
 import "./searchBooks.css";
 import OptionsList from "./autoComplete";
@@ -10,6 +8,7 @@ import {
   FormAutocompleteInput,
   SubmitFormQuery,
 } from "../SearchFormUIComponents/searchFormUtility";
+import getBookDetails from "../../SearchUtilityFunction/bookDetails";
 
 export default function SearchForm() {
   let [query, updateQuery] = useState({ bookTitle: "", bookId: "" });
