@@ -18,5 +18,3 @@ export default function DisplaySearchBook({ selectedBooks }) {
     </div>
   );
 }
-
-//https://www.robinwieruch.de/react-testing-library
