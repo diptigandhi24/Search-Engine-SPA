@@ -21,7 +21,7 @@ export default function SearchForm() {
     updateQuery({
       ...query,
       bookTitle: autoCompletelist[e.currentTarget.id].bookTitle,
-      bookId: e.currentTarget.id,
+      bookId: autoCompletelist[e.currentTarget.id].bookId,
     });
     updateDisplaySearchResults([]);
     isDisabled((prev) => !prev);
