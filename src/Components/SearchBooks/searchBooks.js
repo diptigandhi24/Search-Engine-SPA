@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import searchForBooks from "../../SearchUtilityFunction/searchFunction";
 import DisplaySearchBook from "../DisplaySelectedBookCard/displaySearchBook";
 import "./searchBooks.css";
-import OptionsList from "./autoComplete";
+import OptionsList from "./optionsList";
 import {
   FormInput,
   FormAutocompleteInput,
@@ -78,7 +78,7 @@ export default function SearchForm() {
             labelValue="Number of books :"
             accessFor="Number of search results, default is 3"
             type="number"
-            placeholder="3"
+            placeholder="Default result is 3"
             onChange={(e) => {
               updateNoOfBooks(e.target.value);
             }}
