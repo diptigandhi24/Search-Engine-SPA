@@ -1,22 +1,34 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { FormInput, FormAutocompleteInput } from "./searchFormUtility";
+import searchForBooks from "../../SearchUtilityFunction/searchFunction";
+import OptionsList from "../SearchBooks/optionsList";
+// import { StateMock } from "@react-mock/state";
 
-describe("FormInputs UI along with common propTypes", () => {
+describe("Search Form Components", () => {
   //for proptype checking implement typescript
-  test("Rendering formInput Feild", () => {
-    render(
-      <FormInput
-        labelValue="Number of books :"
-        accessFor="Number of search results, default is 3"
-        type="number"
-        placeholder="3"
-        onChange={(e) => {
-          console.log("You clicked me");
-        }}
-        value={3}
-      />
+  test("FormInput : capture input onchange", () => {
+    function handleChange(evt) {
+      let resultLength = 3;
+      let query = evt.target.value;
+      let result = searchForBooks(query, resultLength);
+
+      expect(result.length).toEqual(3);
+    }
+
+    const { getByPlaceholderText } = render(
+      <FormAutocompleteInput
+        labelValue="Enter search word :"
+        accessFor="Enter the keywords to search books"
+        type="text"
+        placeholder="Enter Book name"
+        onChange={handleChange}
+        value={""}
+      ></FormAutocompleteInput>
     );
-    render(<FormAutocompleteInput />);
+    const node = getByPlaceholderText("Enter Book name");
+    fireEvent.change(node, { target: { value: "life" } });
   });
+
+  // test("FormAutoCompleteInput", () => {});
 });

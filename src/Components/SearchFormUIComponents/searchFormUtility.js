@@ -43,16 +43,18 @@ export function FormAutocompleteInput({
 }) {
   return (
     <div className="form-content">
-      <label htmlFor={accessFor}>{labelValue}</label>
-      <div className="list-wrapper">
-        <input
-          type={type}
-          placeholder={placeholder}
-          onChange={onChange}
-          value={value}
-        />
-        {children}
-      </div>
+      <label htmlFor={accessFor}>
+        {labelValue}
+        <div className="list-wrapper">
+          <input
+            type={type}
+            placeholder={placeholder}
+            onChange={onChange}
+            value={value}
+          />
+          {children}
+        </div>
+      </label>
     </div>
   );
 }
